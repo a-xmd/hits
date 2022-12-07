@@ -1,5 +1,12 @@
 import { PropsWithChildren } from 'react'
 
-export const Button: React.FC<PropsWithChildren> = ({ children }) => {
-  return <button>{children}</button>
+interface ButtonProps {
+  handleClick: () => void
+}
+
+export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
+  children,
+  handleClick,
+}) => {
+  return <button onClick={() => handleClick()}>{children}</button>
 }

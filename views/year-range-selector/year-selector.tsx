@@ -1,19 +1,24 @@
-import { ChevronDownIcon, ChevronUpIcon, Input } from '~/components'
+import { ChevronDownIcon, ChevronUpIcon, YearInput } from '~/components'
 import { Button } from './button'
 import classes from './year-range-selector.module.scss'
 
-export const YearSelector = () => {
+interface YearSelectorProps {
+  year: number
+  callback: (newYear: number) => void
+}
+
+export const YearSelector = ({ year, callback }: YearSelectorProps) => {
   return (
     <div className={classes['year-selector-container']}>
-      <Button>
+      <Button handleClick={() => callback(year + 1)}>
         <ChevronUpIcon />
       </Button>
 
       <div className={classes['year-selector']}>
-        <Input className={classes.input} />
+        <YearInput className={classes.input} year={year} />
       </div>
 
-      <Button>
+      <Button handleClick={() => callback(year - 1)}>
         <ChevronDownIcon />
       </Button>
     </div>

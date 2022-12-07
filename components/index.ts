@@ -1,4 +1,4 @@
-export { Input } from './input/input'
+export { YearInput } from './year-input/year-input'
 
 export { Layout } from './layout/layout'
 

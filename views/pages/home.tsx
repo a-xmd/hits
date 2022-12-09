@@ -1,28 +1,53 @@
 import { useState, useEffect } from 'react'
-import { YearRangeSelector } from '~/views'
+import { YearPicker } from '~/components'
 
 const useFetchHits = () => {
-  const [startYear, setStartYear] = useState(2003)
-  const [endYear, setEndYear] = useState(2008)
+  const START_YEAR = 1965
+  const END_YEAR = 2022
+
+  const [startYear, setStartYear] = useState(START_YEAR)
+  const [endYear, setEndYear] = useState(END_YEAR)
+  const [selectedStartYear, setSelectedStartYear] = useState(1990)
+  const [selectedEndYear, setSelectedEndYear] = useState(END_YEAR)
 
   useEffect(() => {
     console.log('fetch!')
   }, [startYear, endYear])
 
-  return { startYear, endYear, setStartYear, setEndYear }
+  return {
+    startYear,
+    // setStartYear,
+    selectedStartYear,
+    setSelectedStartYear,
+    endYear,
+    // setEndYear,
+    selectedEndYear,
+    setSelectedEndYear,
+  }
 }
 
 export const HomeView = () => {
-  const { startYear, setStartYear, endYear, setEndYear } = useFetchHits()
+  const {
+    startYear,
+    endYear,
+    selectedStartYear,
+    setSelectedStartYear,
+    selectedEndYear,
+    setSelectedEndYear,
+  } = useFetchHits()
 
   return (
     <div>
       <h2>select years</h2>
-      <YearRangeSelector
+      <span>start: {selectedStartYear}</span>
+      <span>end: {selectedEndYear}</span>
+      <YearPicker
         startYear={startYear}
+        selectedStartYear={selectedStartYear}
+        setSelectedStartYear={setSelectedStartYear}
         endYear={endYear}
-        setStartYear={setStartYear}
-        setEndYear={setEndYear}
+        selectedEndYear={selectedEndYear}
+        setSelectedEndYear={setSelectedEndYear}
       />
     </div>
   )

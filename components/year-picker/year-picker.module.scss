@@ -3,19 +3,25 @@
   gap: var(--spacing-regular);
 
   > * {
-    flex-grow: 1;
+    flex: 1;
   }
 
   .year-selector-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: var(--spacing-s);
 
     > button {
+      // flex-shrink: 0;
       padding: var(--spacing-xs);
-      border-radius: var(--radius-pill);
+
+      &:first-of-type {
+        border-top-right-radius: unset;
+        border-bottom-right-radius: unset;
+      }
+
+      &:last-of-type {
+        border-top-left-radius: unset;
+        border-bottom-left-radius: unset;
+      }
 
       background-color: var(--color-primary);
       color: white;
@@ -26,14 +32,9 @@
       }
     }
 
-    .year-selector {
-      border-radius: var(--radius-regular);
-
-      .input {
-        width: 12ch;
-        text-align: center;
-        padding: var(--spacing-xs);
-      }
+    select {
+      flex: 1;
+      border-radius: unset;
     }
   }
 }

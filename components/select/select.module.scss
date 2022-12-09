@@ -1,0 +1,16 @@
+.container {
+  display: inline-flex;
+  flex: 1;
+
+  .select {
+    appearance: none;
+    background-color: unset;
+    border: 1px solid black;
+
+    padding: var(--spacing-s);
+
+    border-radius: var(--radius-regular);
+    cursor: pointer;
+    text-align: center;
+  }
+}

@@ -71,7 +71,6 @@ export const start = async () => {
             }
             const json = parseHtml(htmlString)
             saveJson(json, year, week)
-            // await timeout(1)
         }
     }
 }

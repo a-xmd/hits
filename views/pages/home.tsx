@@ -7,8 +7,8 @@ const useFetchHits = () => {
 
   const [startYear, setStartYear] = useState(START_YEAR)
   const [endYear, setEndYear] = useState(END_YEAR)
-  const [selectedStartYear, setSelectedStartYear] = useState(1990)
-  const [selectedEndYear, setSelectedEndYear] = useState(END_YEAR)
+  const [selectedStartYear, setSelectedStartYear] = useState(1998)
+  const [selectedEndYear, setSelectedEndYear] = useState(2006)
 
   useEffect(() => {
     console.log('fetch!')
@@ -39,8 +39,7 @@ export const HomeView = () => {
   return (
     <div>
       <h2>select years</h2>
-      <span>start: {selectedStartYear}</span>
-      <span>end: {selectedEndYear}</span>
+
       <YearPicker
         startYear={startYear}
         selectedStartYear={selectedStartYear}

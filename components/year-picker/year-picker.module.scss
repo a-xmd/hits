@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  gap: var(--spacing-regular);
+  gap: var(--spacing-l);
 
   > * {
     flex: 1;
@@ -8,20 +8,11 @@
 
   .year-selector-container {
     display: flex;
+    gap: var(--spacing-xxs);
 
     > button {
-      // flex-shrink: 0;
+      flex-shrink: 0;
       padding: var(--spacing-xs);
-
-      &:first-of-type {
-        border-top-right-radius: unset;
-        border-bottom-right-radius: unset;
-      }
-
-      &:last-of-type {
-        border-top-left-radius: unset;
-        border-bottom-left-radius: unset;
-      }
 
       background-color: var(--color-primary);
       color: white;
@@ -34,7 +25,6 @@
 
     select {
       flex: 1;
-      border-radius: unset;
     }
   }
 }

@@ -20,10 +20,13 @@ export const SingleYearPicker = ({
   upperBound,
   callback,
 }: SingleYearPickerProps) => {
+  const correctedFrom = lowerBound || from
+  const correctedTo = upperBound || to
+
   return (
     <div className={classes['year-selector-container']}>
       <Button
-        disabled={year === from}
+        disabled={year === correctedFrom}
         handleClick={() => year && callback(year - 1)}
       >
         <ChevronDownIcon />
@@ -32,13 +35,13 @@ export const SingleYearPicker = ({
       <YearSelect
         className={classes.input}
         year={year}
-        from={lowerBound || from}
-        to={upperBound || to}
+        from={correctedFrom}
+        to={correctedTo}
         callback={callback}
       />
 
       <Button
-        disabled={year === to}
+        disabled={year === correctedTo}
         handleClick={() => year < to && callback(year + 1)}
       >
         <ChevronUpIcon />

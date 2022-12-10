@@ -12,13 +12,20 @@ const start = async () => {
 
         for (const [indexAsString, row] of Object.entries(rows)) {
             const index = parseInt(indexAsString)
-            const score = 40 - index
-
             const cumulativeRow = cumulativeRows[row.id]
+
+            const score = 40 - index
+            const year = parseInt(fileName.split('.')[0])
+
+            if (!cumulativeRow) {
+                row.years = [year]
+            } else {
+                row.years = Array.from(new Set([year, ...cumulativeRow.years])).reverse()
+            }
 
             cumulativeRows[row.id] = {
                 ...row,
-                score: cumulativeRows[row.id] ? cumulativeRow.score + score : score
+                score: cumulativeRows[row.id] ? cumulativeRow.score + score : score,
             }
         }
     }

@@ -30,25 +30,24 @@ const useHits = () => {
 const useFetch = (url: string) => {
   const [data, setData] = useState([])
   const [isFetching, setIsFetching] = useState(true)
-  const [isDone, setIsDone] = useState(false)
+  // const [isDone, setIsDone] = useState(false)
 
+  /*
   useEffect(() => {
     if (!isFetching) {
       return
     }
-
-    console.log('fetch')
 
     const startFetching = async () => {
       const response = await fetch(url)
       const json = await response.json()
       setData(json)
       setIsFetching(false)
-      setIsDone(true)
+      // setIsDone(true)
     }
 
-    startFetching()
-  }, [isFetching, url])
+    startFetching() 
+  }, [isFetching, url])*/
 
   return { data, isFetching, setIsFetching }
 }
@@ -74,6 +73,9 @@ export const HomeView = () => {
 
   return (
     <div>
+      <div className={classes.hero}>
+        Vind random hitjes van vroeger. Van 1965 tot nu.
+      </div>
       <YearPicker
         startYear={startYear}
         selectedStartYear={selectedStartYear}
@@ -85,8 +87,12 @@ export const HomeView = () => {
       />
 
       <div className={classes['main-button-container']}>
-        <Button disabled={isFetching} handleClick={() => setIsFetching(true)}>
-          zoek hitjes
+        <Button
+          variant="primary"
+          disabled={isFetching}
+          handleClick={() => setIsFetching(true)}
+        >
+          vind hitjes
         </Button>
       </div>
 

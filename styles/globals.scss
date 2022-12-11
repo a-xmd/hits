@@ -95,7 +95,7 @@ h3 {
 button {
   background-color: unset;
   border: 1px solid black;
-  border-radius: var(--radius-small);
+  border-radius: var(--radius-s);
   cursor: pointer;
 
   &:disabled {
@@ -124,8 +124,10 @@ input {
   // radius
   --radius-pill: 100%;
   --radius-regular: 8px;
-  --radius-small: 4px;
+  --radius-s: 4px;
 
   // font sizes
   --font-size-s: 0.875rem;
+  --font-size-l: 1.125rem;
+  --font-size-xl: 1.5rem;
 }

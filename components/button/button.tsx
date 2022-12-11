@@ -5,6 +5,8 @@ interface ButtonProps {
   handleClick: () => void
   children: React.ReactNode
 
+  variant?: '' | 'primary'
+
   disabled?: boolean
   className?: string
 }
@@ -13,6 +15,7 @@ export const Button = ({
   disabled = false,
   handleClick,
   children,
+  variant = '',
   className = '',
 }: ButtonProps) => {
   return (
@@ -20,6 +23,7 @@ export const Button = ({
       disabled={disabled}
       onClick={handleClick}
       className={classnames(classes.button, {
+        [classes[variant]]: !!variant,
         [className]: !!className,
       })}
     >

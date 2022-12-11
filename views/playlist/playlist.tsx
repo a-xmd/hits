@@ -12,13 +12,11 @@ export const Playlist = ({
   isFetching = false,
   limit,
 }: PlaylistProps) => {
-  if (!hits.length) {
-    return <div>empty state</div>
-  }
+  const items = isFetching ? Array(limit).fill(null) : hits
   return (
     <div className={classes['playlist']}>
-      {hits.map((song, index) => (
-        <PlaylistItem key={`id-${index}`} song={song} />
+      {items.map((song, index) => (
+        <PlaylistItem key={`id-${index}`} song={song} isFetching={isFetching} />
       ))}
     </div>
   )

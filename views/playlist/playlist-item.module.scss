@@ -14,11 +14,13 @@
     height: 40px;
 
     border-radius: var(--radius-s);
-
     background-color: rgba(black, 0.4);
   }
 
   .right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxs);
     overflow: hidden;
 
     .title {
@@ -26,6 +28,14 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
+
+      .mock-title {
+        display: inline-flex;
+        width: 5em;
+        border-radius: var(--radius-large);
+
+        background-color: rgba(black, 0.3);
+      }
     }
 
     .artist-container {
@@ -39,6 +49,13 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+      }
+
+      &.mock-artist-container {
+        background-color: rgba(black, 0.3);
+        border-radius: var(--radius-regular);
+
+        width: 8em;
       }
     }
   }

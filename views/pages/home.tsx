@@ -32,7 +32,6 @@ const useFetch = (url: string) => {
   const [isFetching, setIsFetching] = useState(true)
   // const [isDone, setIsDone] = useState(false)
 
-  /*
   useEffect(() => {
     if (!isFetching) {
       return
@@ -41,13 +40,14 @@ const useFetch = (url: string) => {
     const startFetching = async () => {
       const response = await fetch(url)
       const json = await response.json()
+
       setData(json)
       setIsFetching(false)
       // setIsDone(true)
     }
 
-    startFetching() 
-  }, [isFetching, url])*/
+    startFetching()
+  }, [isFetching, url])
 
   return { data, isFetching, setIsFetching }
 }

@@ -12,11 +12,19 @@ export const Playlist = ({
   isFetching = false,
   limit,
 }: PlaylistProps) => {
-  const items = isFetching ? Array(limit).fill(null) : hits
+  const isMock = isFetching || !hits.length
+  const items = isMock ? Array(limit).fill(null) : hits
+
+  console.log('>', isFetching)
   return (
     <div className={classes['playlist']}>
       {items.map((song, index) => (
-        <PlaylistItem key={`id-${index}`} song={song} isFetching={isFetching} />
+        <PlaylistItem
+          key={`id-${index}`}
+          index={index + 1}
+          song={song}
+          isMock={isMock}
+        />
       ))}
     </div>
   )

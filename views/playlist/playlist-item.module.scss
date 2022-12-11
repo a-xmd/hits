@@ -8,13 +8,17 @@
   border-radius: var(--radius-s);
   background-color: rgba(black, 0.05);
 
+  .index {
+    color: rgba(black, 0.8);
+  }
+
   .left {
     aspect-ratio: 1/1;
     width: 40px;
     height: 40px;
 
     border-radius: var(--radius-s);
-    background-color: rgba(black, 0.4);
+    background-color: rgba(black, 0.3);
   }
 
   .right {

@@ -11,7 +11,7 @@ const useHits = () => {
   const [endYear] = useState(END_YEAR)
   const [selectedStartYear, setSelectedStartYear] = useState(2006)
   const [selectedEndYear, setSelectedEndYear] = useState(2014)
-  const [limit] = useState(5)
+  const [limit] = useState(10)
 
   /* useEffect(() => {}, [selectedStartYear, selectedEndYear]) */
 
@@ -29,7 +29,7 @@ const useHits = () => {
 
 const useFetch = (url: string) => {
   const [data, setData] = useState([])
-  const [isFetching, setIsFetching] = useState(true)
+  const [isFetching, setIsFetching] = useState(false)
   // const [isDone, setIsDone] = useState(false)
 
   useEffect(() => {

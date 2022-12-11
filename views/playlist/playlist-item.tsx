@@ -2,7 +2,8 @@ import classnames from 'classnames'
 import classes from './playlist-item.module.scss'
 
 interface PlaylistItemProps {
-  isFetching?: boolean
+  index: number
+  isMock?: boolean
 
   song?: {
     title: string
@@ -11,10 +12,10 @@ interface PlaylistItemProps {
   }
 }
 
-export const PlaylistItem = ({ song, isFetching }: PlaylistItemProps) => {
-  console.log('and', isFetching)
+export const PlaylistItem = ({ song, isMock, index }: PlaylistItemProps) => {
   return (
     <article className={classes['playlist-item']}>
+      <div className={classes.index}>{index}</div>
       <div className={classes.left}></div>
       <div className={classes.right}>
         <div className={classes.title}>
@@ -26,10 +27,10 @@ export const PlaylistItem = ({ song, isFetching }: PlaylistItemProps) => {
         </div>
         <div
           className={classnames(classes['artist-container'], {
-            [classes['mock-artist-container']]: isFetching,
+            [classes['mock-artist-container']]: isMock,
           })}
         >
-          {isFetching ? (
+          {isMock ? (
             <span>&nbsp;</span>
           ) : (
             <>

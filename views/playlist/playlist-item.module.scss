@@ -2,9 +2,8 @@
   padding: 8px 16px;
 
   display: flex;
-  // gap: var(--spacing-s);
   gap: var(--spacing-xxs);
-  align-items: center;
+  align-items: stretch;
 
   border-radius: var(--radius-s);
   background-color: rgba(black, 0.05);
@@ -15,18 +14,29 @@
   }
 
   .left {
-    aspect-ratio: 1/1;
-    width: 40px;
-    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xxs);
     margin-right: var(--spacing-xs);
 
-    border-radius: var(--radius-s);
-    background-color: rgba(black, 0.3);
+    .image {
+      width: 40px;
+      height: 40px;
+
+      border-radius: var(--radius-s);
+      background-color: rgba(black, 0.3);
+    }
+
+    .year {
+      font-size: var(--font-size-xs);
+    }
   }
 
   .right {
     display: flex;
     flex-direction: column;
+
     gap: var(--spacing-xxxs);
     overflow: hidden;
 

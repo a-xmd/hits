@@ -15,7 +15,12 @@ interface PlaylistItemProps {
 export const PlaylistItem = ({ song, isMock, index }: PlaylistItemProps) => {
   return (
     <article className={classes['playlist-item']}>
-      <div className={classes.left}></div>
+      <div className={classes.left}>
+        <div className={classes['image']}></div>
+        <span className={classes.year}>
+          {song ? song.year : <span>&nbsp;</span>}
+        </span>
+      </div>
       <div className={classes.right}>
         <div className={classes.title}>
           {song ? (
@@ -33,7 +38,6 @@ export const PlaylistItem = ({ song, isMock, index }: PlaylistItemProps) => {
             <span>&nbsp;</span>
           ) : (
             <>
-              <span>{song?.year}</span>
               <span className={classes.artist}>{song?.artist}</span>
             </>
           )}

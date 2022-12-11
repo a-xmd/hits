@@ -15,7 +15,6 @@ export const Playlist = ({
   const isMock = isFetching || !hits.length
   const items = isMock ? Array(limit).fill(null) : hits
 
-  console.log('>', isFetching)
   return (
     <div className={classes['playlist']}>
       {items.map((song, index) => (

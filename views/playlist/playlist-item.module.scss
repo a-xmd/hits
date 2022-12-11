@@ -31,7 +31,8 @@
     overflow: hidden;
 
     .title {
-      font-weight: 500;
+      font-family: var(--font-display);
+      font-weight: bold;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;

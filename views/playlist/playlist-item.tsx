@@ -15,7 +15,6 @@ interface PlaylistItemProps {
 export const PlaylistItem = ({ song, isMock, index }: PlaylistItemProps) => {
   return (
     <article className={classes['playlist-item']}>
-      <div className={classes.index}>{index}</div>
       <div className={classes.left}></div>
       <div className={classes.right}>
         <div className={classes.title}>
@@ -43,3 +42,5 @@ export const PlaylistItem = ({ song, isMock, index }: PlaylistItemProps) => {
     </article>
   )
 }
+
+/* <div className={classes.index}>{index}</div> */

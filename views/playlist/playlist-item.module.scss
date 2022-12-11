@@ -2,7 +2,8 @@
   padding: 8px 16px;
 
   display: flex;
-  gap: var(--spacing-s);
+  // gap: var(--spacing-s);
+  gap: var(--spacing-xxs);
   align-items: center;
 
   border-radius: var(--radius-s);
@@ -10,12 +11,14 @@
 
   .index {
     color: rgba(black, 0.8);
+    min-width: 2ch;
   }
 
   .left {
     aspect-ratio: 1/1;
     width: 40px;
     height: 40px;
+    margin-right: var(--spacing-xs);
 
     border-radius: var(--radius-s);
     background-color: rgba(black, 0.3);

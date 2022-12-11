@@ -1,29 +1,56 @@
 import { useState, useEffect } from 'react'
-import { YearPicker } from '~/components'
+import { Button, YearPicker } from '~/components'
+import { Playlist, PlaylistItem } from '~/views'
+import classes from './home.module.scss'
 
-const useFetchHits = () => {
+const useHits = () => {
   const START_YEAR = 1965
   const END_YEAR = 2022
 
-  const [startYear, setStartYear] = useState(START_YEAR)
-  const [endYear, setEndYear] = useState(END_YEAR)
-  const [selectedStartYear, setSelectedStartYear] = useState(1998)
-  const [selectedEndYear, setSelectedEndYear] = useState(2006)
+  const [startYear] = useState(START_YEAR)
+  const [endYear] = useState(END_YEAR)
+  const [selectedStartYear, setSelectedStartYear] = useState(2006)
+  const [selectedEndYear, setSelectedEndYear] = useState(2014)
+  const [limit] = useState(5)
 
-  useEffect(() => {
-    console.log('fetch!')
-  }, [startYear, endYear])
+  /* useEffect(() => {}, [selectedStartYear, selectedEndYear]) */
 
   return {
     startYear,
-    // setStartYear,
     selectedStartYear,
     setSelectedStartYear,
     endYear,
-    // setEndYear,
     selectedEndYear,
     setSelectedEndYear,
+
+    limit,
   }
+}
+
+const useFetch = (url: string) => {
+  const [data, setData] = useState([])
+  const [isFetching, setIsFetching] = useState(true)
+  const [isDone, setIsDone] = useState(false)
+
+  useEffect(() => {
+    if (!isFetching) {
+      return
+    }
+
+    console.log('fetch')
+
+    const startFetching = async () => {
+      const response = await fetch(url)
+      const json = await response.json()
+      setData(json)
+      setIsFetching(false)
+      setIsDone(true)
+    }
+
+    startFetching()
+  }, [isFetching, url])
+
+  return { data, isFetching, setIsFetching }
 }
 
 export const HomeView = () => {
@@ -34,12 +61,19 @@ export const HomeView = () => {
     setSelectedStartYear,
     selectedEndYear,
     setSelectedEndYear,
-  } = useFetchHits()
+    limit,
+  } = useHits()
+
+  const {
+    isFetching,
+    setIsFetching,
+    data: hits,
+  } = useFetch(
+    `${process.env.NEXT_PUBLIC_API}/v1/hits?start=${selectedStartYear}&end=${selectedEndYear}&limit=${limit}`
+  )
 
   return (
     <div>
-      <h2>select years</h2>
-
       <YearPicker
         startYear={startYear}
         selectedStartYear={selectedStartYear}
@@ -47,7 +81,23 @@ export const HomeView = () => {
         endYear={endYear}
         selectedEndYear={selectedEndYear}
         setSelectedEndYear={setSelectedEndYear}
+        className={classes['year-picker']}
       />
+
+      <div className={classes['main-button-container']}>
+        <Button disabled={isFetching} handleClick={() => setIsFetching(true)}>
+          zoek hitjes
+        </Button>
+      </div>
+
+      <Playlist hits={hits} isFetching={isFetching} limit={limit} />
     </div>
   )
 }
+
+/*
+      <div>
+        <div>en los</div>
+        <PlaylistItem />
+      </div>
+*/

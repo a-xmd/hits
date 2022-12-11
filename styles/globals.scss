@@ -69,9 +69,6 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
-
-  // TODO: fix this
-  margin-bottom: 0.5em;
 }
 
 h1 {
@@ -98,7 +95,7 @@ h3 {
 button {
   background-color: unset;
   border: 1px solid black;
-  border-radius: var(--radius-regular);
+  border-radius: var(--radius-small);
   cursor: pointer;
 
   &:disabled {
@@ -128,4 +125,7 @@ input {
   --radius-pill: 100%;
   --radius-regular: 8px;
   --radius-small: 4px;
+
+  // font sizes
+  --font-size-s: 0.875rem;
 }

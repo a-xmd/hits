@@ -1,9 +1,11 @@
+import classnames from 'classnames'
 import { SingleYearPicker } from './single-year-picker'
 import classes from './year-picker.module.scss'
 
 type SetYear = (year: number) => void
 
 interface YearRangeSelectorProps {
+  className?: string
   startYear: number
   selectedStartYear: number
   setSelectedStartYear: SetYear
@@ -20,9 +22,14 @@ export const YearPicker = ({
   endYear,
   selectedEndYear,
   setSelectedEndYear,
+  className = '',
 }: YearRangeSelectorProps) => {
   return (
-    <div className={classes.container}>
+    <div
+      className={classnames(classes.container, {
+        [className]: !!className,
+      })}
+    >
       <SingleYearPicker
         year={selectedStartYear}
         from={startYear}

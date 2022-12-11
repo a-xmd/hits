@@ -11,7 +11,7 @@ const useHits = () => {
   const [endYear] = useState(END_YEAR)
   const [selectedStartYear, setSelectedStartYear] = useState(2014)
   const [selectedEndYear, setSelectedEndYear] = useState(2017)
-  const [limit] = useState(10)
+  const [limit] = useState(5)
 
   /* useEffect(() => {}, [selectedStartYear, selectedEndYear]) */
 

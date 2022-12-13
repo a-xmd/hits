@@ -78,7 +78,9 @@ export const HomeView = () => {
 
   return (
     <div>
-      <div className={classes.hero}>tmp title</div>
+      <div className={classes.hero}>
+        Vind random hitjes van vroeger. Van 1965 tot nu.
+      </div>
       <YearPicker
         startYear={startYear}
         selectedStartYear={selectedStartYear}
@@ -109,4 +111,3 @@ export const HomeView = () => {
     </div>
   )
 }
-//  Vind random hitjes van vroeger. Van 1965 tot nu.

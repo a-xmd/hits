@@ -12,6 +12,7 @@ const useHits = () => {
   const [selectedStartYear, setSelectedStartYear] = useState(2014)
   const [selectedEndYear, setSelectedEndYear] = useState(2017)
   const [limit] = useState(5)
+  const [pinnedHits, setPinnedHits] = useState(() => Array(limit).fill(false))
 
   /* useEffect(() => {}, [selectedStartYear, selectedEndYear]) */
 
@@ -24,12 +25,14 @@ const useHits = () => {
     setSelectedEndYear,
 
     limit,
+    pinnedHits,
+    setPinnedHits,
   }
 }
 
 const useFetch = (url: string) => {
   const [data, setData] = useState([])
-  const [isFetching, setIsFetching] = useState(false)
+  const [isFetching, setIsFetching] = useState(true)
   // const [isDone, setIsDone] = useState(false)
 
   useEffect(() => {
@@ -61,6 +64,8 @@ export const HomeView = () => {
     selectedEndYear,
     setSelectedEndYear,
     limit,
+    pinnedHits,
+    setPinnedHits,
   } = useHits()
 
   const {
@@ -73,9 +78,7 @@ export const HomeView = () => {
 
   return (
     <div>
-      <div className={classes.hero}>
-        Vind random hitjes van vroeger. Van 1965 tot nu.
-      </div>
+      <div className={classes.hero}>tmp title</div>
       <YearPicker
         startYear={startYear}
         selectedStartYear={selectedStartYear}
@@ -96,14 +99,14 @@ export const HomeView = () => {
         </Button>
       </div>
 
-      <Playlist hits={hits} isFetching={isFetching} limit={limit} />
+      <Playlist
+        hits={hits}
+        pinnedHits={pinnedHits}
+        setPinnedHits={setPinnedHits}
+        isFetching={isFetching}
+        limit={limit}
+      />
     </div>
   )
 }
-
-/*
-      <div>
-        <div>en los</div>
-        <PlaylistItem />
-      </div>
-*/
+//  Vind random hitjes van vroeger. Van 1965 tot nu.

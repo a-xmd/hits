@@ -1,2 +1,5 @@
 export { ChevronDownIcon } from './chevron-down'
 export { ChevronUpIcon } from './chevron-up'
+export { LockClosedIcon } from './lock-closed'
+export { LockOpenedIcon } from './lock-opened'
+export { PinIcon } from './pin'

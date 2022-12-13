@@ -3,6 +3,8 @@ import classes from './playlist.module.scss'
 
 interface PlaylistProps {
   hits: any[]
+  pinnedHits: boolean[]
+  setPinnedHits: (hits: boolean[]) => void
   isFetching: boolean
   limit: number
 }
@@ -10,6 +12,8 @@ interface PlaylistProps {
 export const Playlist = ({
   hits,
   isFetching = false,
+  pinnedHits,
+  setPinnedHits,
   limit,
 }: PlaylistProps) => {
   const isMock = isFetching || !hits.length
@@ -17,12 +21,19 @@ export const Playlist = ({
 
   return (
     <div className={classes['playlist']}>
-      {items.map((song, index) => (
+      {items.map((song, itemIndex) => (
         <PlaylistItem
-          key={`id-${index}`}
-          index={index + 1}
+          key={`id-${itemIndex}`}
           song={song}
           isMock={isMock}
+          isPinned={pinnedHits[itemIndex]}
+          pinHit={() => {
+            setPinnedHits(
+              pinnedHits.map((isPinned, pinnedHitIndex) =>
+                pinnedHitIndex === itemIndex ? !isPinned : isPinned
+              )
+            )
+          }}
         />
       ))}
     </div>

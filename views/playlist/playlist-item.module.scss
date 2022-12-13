@@ -3,7 +3,7 @@
 
   display: flex;
   gap: var(--spacing-xxs);
-  align-items: stretch;
+  align-items: center;
 
   border-radius: var(--radius-s);
   background-color: rgba(black, 0.05);
@@ -34,47 +34,83 @@
   }
 
   .right {
+    flex-grow: 1;
     display: flex;
-    flex-direction: column;
-
-    gap: var(--spacing-xxxs);
+    gap: var(--spacing-s);
+    justify-content: space-between;
+    align-items: center;
     overflow: hidden;
 
-    .title {
-      font-family: var(--font-display);
-      font-weight: bold;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-
-      .mock-title {
-        display: inline-flex;
-        width: 5em;
-        border-radius: var(--radius-large);
-
-        background-color: rgba(black, 0.3);
-      }
-    }
-
-    .artist-container {
-      font-size: var(--font-size-s);
-
+    .artist-and-title {
       display: flex;
-      gap: var(--spacing-xxs);
+      flex-direction: column;
+
+      gap: var(--spacing-xxxs);
       overflow: hidden;
 
-      .artist {
+      .title {
+        font-family: var(--font-display);
+        font-weight: bold;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+
+        .mock-title {
+          display: inline-flex;
+          width: 5em;
+          border-radius: var(--radius-large);
+
+          background-color: rgba(black, 0.3);
+        }
       }
 
-      &.mock-artist-container {
-        background-color: rgba(black, 0.3);
-        border-radius: var(--radius-regular);
+      .artist-container {
+        font-size: var(--font-size-s);
 
-        width: 8em;
+        display: flex;
+
+        gap: var(--spacing-xxs);
+        overflow: hidden;
+
+        .artist {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+
+        &.mock-artist-container {
+          background-color: rgba(black, 0.3);
+          border-radius: var(--radius-regular);
+
+          width: 8em;
+        }
       }
+    }
+
+    .lock {
+      flex-shrink: 0;
+
+      .icon-button {
+        padding: var(--spacing-s);
+      }
+    }
+  }
+}
+
+.pin-button {
+  border-color: transparent;
+  background-color: rgba(black, 0.1);
+
+  svg {
+    width: 16px;
+    fill: rgba(black, 0.8);
+  }
+
+  &.is-pinned {
+    background-color: rgba(black, 0.6);
+
+    svg {
+      fill: white;
     }
   }
 }

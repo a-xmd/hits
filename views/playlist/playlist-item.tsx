@@ -56,7 +56,9 @@ export const PlaylistItem = ({
       })}
     >
       <div className={classes.left}>
-        <div className={classes['image']}></div>
+        <div className={classes['image']}>
+          <img src={song?.image} />
+        </div>
         <span className={classes.year}>{song?.year}</span>
       </div>
       <div className={classes.right}>

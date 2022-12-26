@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Head from 'next/head'
 import { Button, YearPicker } from '~/components'
 import { Playlist, PlaylistItem } from '~/views'
 import classes from './home.module.scss'
@@ -31,8 +32,8 @@ const useHits = () => {
 
   const [startYear] = useState(START_YEAR)
   const [endYear] = useState(END_YEAR)
-  const [selectedStartYear, setSelectedStartYear] = useState(2014)
-  const [selectedEndYear, setSelectedEndYear] = useState(2017)
+  const [selectedStartYear, setSelectedStartYear] = useState(2008)
+  const [selectedEndYear, setSelectedEndYear] = useState(2018)
   const [limit] = useState(10)
 
   const [hits, setHits] = useState(() => Array(limit).fill(null))
@@ -103,6 +104,9 @@ export const HomeView = () => {
 
   return (
     <div>
+      <Head>
+        <title>Geef mij hitjes</title>
+      </Head>
       <div className={classes.hero}>
         Vind random hitjes van vroeger. Van 1965 tot nu.
       </div>

@@ -1,28 +1,35 @@
 import classnames from 'classnames'
 import classes from './playlist-item.module.scss'
 import { Button, PinIcon, LockClosedIcon, LockOpenedIcon } from '~/components'
+import type { Song } from './types'
 
 interface PlaylistItemProps {
-  isMock?: boolean
+  isFetching?: boolean
   isPinned: boolean
 
   pinHit: () => void
 
-  song?: {
-    title: string
-    artist: string
-    year: number
-  }
+  song?: Song
 }
 
 interface PinButtonProps {
   isPinned: boolean
+
+  isHidden?: boolean
   callback: () => void
   className?: string
 }
 
-const PinButton = ({ isPinned, callback, className = '' }: PinButtonProps) => {
-  console.log('> classname', className)
+const PinButton = ({
+  isPinned,
+  callback,
+  className = '',
+  isHidden = false,
+}: PinButtonProps) => {
+  if (isHidden) {
+    return null
+  }
+
   return (
     <Button
       className={classnames(classes['icon-button'], {
@@ -38,39 +45,29 @@ const PinButton = ({ isPinned, callback, className = '' }: PinButtonProps) => {
 
 export const PlaylistItem = ({
   song,
-  isMock,
+  isFetching,
   isPinned = false,
   pinHit,
 }: PlaylistItemProps) => {
   return (
-    <article className={classes['playlist-item']}>
+    <article
+      className={classnames(classes['playlist-item'], {
+        [classes['fetching']]: isFetching,
+      })}
+    >
       <div className={classes.left}>
         <div className={classes['image']}></div>
-        <span className={classes.year}>
-          {song ? song.year : <span>&nbsp;</span>}
-        </span>
+        <span className={classes.year}>{song?.year}</span>
       </div>
       <div className={classes.right}>
         <div className={classes['artist-and-title']}>
-          <div className={classes.title}>
-            {song ? (
-              song.title
-            ) : (
-              <span className={classes['mock-title']}>&nbsp;</span>
-            )}
-          </div>
+          <div className={classes.title}>{song?.title}</div>
           <div
             className={classnames(classes['artist-container'], {
-              [classes['mock-artist-container']]: isMock,
+              [classes['mock-artist-container']]: false,
             })}
           >
-            {isMock ? (
-              <span>&nbsp;</span>
-            ) : (
-              <>
-                <span className={classes.artist}>{song?.artist}</span>
-              </>
-            )}
+            <span className={classes.artist}>{song?.artist}</span>
           </div>
         </div>
         <div className={classes.lock}>
@@ -78,6 +75,7 @@ export const PlaylistItem = ({
             className={classes['pin-button']}
             callback={pinHit}
             isPinned={isPinned}
+            isHidden={isFetching}
           />
         </div>
       </div>

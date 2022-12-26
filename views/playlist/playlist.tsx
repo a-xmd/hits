@@ -1,41 +1,48 @@
 import { PlaylistItem } from './playlist-item'
+import type { Song } from './types'
 import classes from './playlist.module.scss'
 
 interface PlaylistProps {
-  hits: any[]
-  pinnedHits: boolean[]
-  setPinnedHits: (hits: boolean[]) => void
+  hits: (Song | null)[]
+
+  // TODO: update
+  pinnedHits: any[]
+  setPinnedHits: (hits: any[]) => void
   isFetching: boolean
   limit: number
 }
 
 export const Playlist = ({
   hits,
-  isFetching = false,
   pinnedHits,
   setPinnedHits,
-  limit,
+  isFetching = false,
 }: PlaylistProps) => {
-  const isMock = isFetching || !hits.length
-  const items = isMock ? Array(limit).fill(null) : hits
-
   return (
     <div className={classes['playlist']}>
-      {items.map((song, itemIndex) => (
-        <PlaylistItem
-          key={`id-${itemIndex}`}
-          song={song}
-          isMock={isMock}
-          isPinned={pinnedHits[itemIndex]}
-          pinHit={() => {
-            setPinnedHits(
-              pinnedHits.map((isPinned, pinnedHitIndex) =>
-                pinnedHitIndex === itemIndex ? !isPinned : isPinned
+      {pinnedHits.map((pinnedSong, itemIndex) => {
+        // TODO: update
+        const song = pinnedSong || hits[itemIndex]
+
+        return (
+          <PlaylistItem
+            key={`id-${itemIndex}`}
+            song={song}
+            isFetching={!pinnedSong && isFetching}
+            isPinned={!!pinnedHits[itemIndex]}
+            pinHit={() => {
+              setPinnedHits(
+                pinnedHits.map((pinnedHit, pinnedHitIndex) => {
+                  if (itemIndex === pinnedHitIndex) {
+                    return song
+                  }
+                  return pinnedHit
+                })
               )
-            )
-          }}
-        />
-      ))}
+            }}
+          />
+        )
+      })}
     </div>
   )
 }

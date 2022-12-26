@@ -21,7 +21,6 @@ export const Playlist = ({
   return (
     <div className={classes['playlist']}>
       {pinnedHits.map((pinnedSong, itemIndex) => {
-        // TODO: update
         const song = pinnedSong || hits[itemIndex]
 
         return (

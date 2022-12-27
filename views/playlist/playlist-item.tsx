@@ -37,6 +37,7 @@ const PinButton = ({
         [classes['is-pinned']]: isPinned,
       })}
       handleClick={() => callback()}
+      ariaLabel="ping song"
     >
       <PinIcon />
     </Button>
@@ -57,7 +58,10 @@ export const PlaylistItem = ({
     >
       <div className={classes.left}>
         <div className={classes['image']}>
-          <img src={song?.image} />
+          <img
+            src={song?.image}
+            alt={song?.title && `image for song "${song.title}"`}
+          />
         </div>
         <span className={classes.year}>{song?.year}</span>
       </div>

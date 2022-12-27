@@ -9,12 +9,15 @@ interface ButtonProps {
 
   disabled?: boolean
   className?: string
+
+  ariaLabel?: string
 }
 
 export const Button = ({
   disabled = false,
   handleClick,
   children,
+  ariaLabel,
   variant = '',
   className = '',
 }: ButtonProps) => {
@@ -26,6 +29,7 @@ export const Button = ({
         [classes[variant]]: !!variant,
         [className]: !!className,
       })}
+      aria-label={ariaLabel}
     >
       {children}
     </button>

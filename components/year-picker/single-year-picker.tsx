@@ -1,5 +1,5 @@
 import { ChevronDownIcon, ChevronUpIcon } from '~/components'
-import { Button } from './button'
+import { Button } from '~/components'
 import { YearSelect } from './year-select'
 import classes from './year-picker.module.scss'
 
@@ -28,6 +28,7 @@ export const SingleYearPicker = ({
       <Button
         disabled={year === correctedFrom}
         handleClick={() => year && callback(year - 1)}
+        ariaLabel={`Decrement "from" year with one (current: ${year})`}
       >
         <ChevronDownIcon />
       </Button>
@@ -43,6 +44,7 @@ export const SingleYearPicker = ({
       <Button
         disabled={year === correctedTo}
         handleClick={() => year < to && callback(year + 1)}
+        ariaLabel={`Increment "to" year with one (current: ${year})`}
       >
         <ChevronUpIcon />
       </Button>

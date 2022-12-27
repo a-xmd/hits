@@ -2,8 +2,12 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang="nl">
       <Head>
+        <meta
+          name="description"
+          content="Vind random hitjes van vroeger en maak je eigen playlist"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

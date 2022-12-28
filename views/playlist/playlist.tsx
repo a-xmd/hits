@@ -23,16 +23,23 @@ export const Playlist = ({
       {pinnedHits.map((pinnedSong, itemIndex) => {
         const song = pinnedSong || hits[itemIndex]
 
+        const isPinned = !!pinnedHits[itemIndex]
+
         return (
           <PlaylistItem
             key={`id-${itemIndex}`}
             song={song}
             isFetching={!pinnedSong && isFetching}
-            isPinned={!!pinnedHits[itemIndex]}
+            isPinned={isPinned}
             pinHit={() => {
+              console.log('setting pinned hits', itemIndex)
               setPinnedHits(
                 pinnedHits.map((pinnedHit, pinnedHitIndex) => {
                   if (itemIndex === pinnedHitIndex) {
+                    if (isPinned) {
+                      return null
+                    }
+                    console.log('hier dus', isPinned)
                     return song
                   }
                   return pinnedHit

@@ -28,6 +28,7 @@ export const SingleYearPicker = ({
       <Button
         disabled={year === correctedFrom}
         handleClick={() => year && callback(year - 1)}
+        variant="outline"
         ariaLabel={`Decrement "from" year with one (current: ${year})`}
       >
         <ChevronDownIcon />
@@ -44,6 +45,7 @@ export const SingleYearPicker = ({
       <Button
         disabled={year === correctedTo}
         handleClick={() => year < to && callback(year + 1)}
+        variant="outline"
         ariaLabel={`Increment "to" year with one (current: ${year})`}
       >
         <ChevronUpIcon />

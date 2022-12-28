@@ -34,7 +34,7 @@ const useHits = () => {
   const [endYear] = useState(END_YEAR)
   const [selectedStartYear, setSelectedStartYear] = useState(2008)
   const [selectedEndYear, setSelectedEndYear] = useState(2018)
-  const [limit] = useState(10)
+  const [limit] = useState(5)
 
   const [hits, setHits] = useState(() => Array(limit).fill(null))
   const [pinnedHits, setPinnedHits] = useState(() => Array(limit).fill(null))
@@ -107,9 +107,15 @@ export const HomeView = () => {
       <Head>
         <title>Geef mij hitjes</title>
       </Head>
-      <div className={classes.hero}>
+      <h1
+        className={classes.hero}
+        onClick={() => {
+          const htmlDataset = document.querySelector('html')!.dataset
+          htmlDataset.theme = htmlDataset.theme === 'dark' ? 'light' : 'dark'
+        }}
+      >
         Vind random hitjes van vroeger. Van 1965 tot nu.
-      </div>
+      </h1>
       <YearPicker
         startYear={startYear}
         selectedStartYear={selectedStartYear}

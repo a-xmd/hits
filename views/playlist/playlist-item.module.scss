@@ -17,7 +17,7 @@
   gap: var(--spacing-xxs);
 
   border-radius: var(--radius-s);
-  background-color: rgba(black, 0.05);
+  background-color: var(--color-canvas-overlay);
   border: 1px solid transparent;
 
   .index {
@@ -95,9 +95,6 @@
         &.mock-artist-container {
           background-color: rgba(black, 0.3);
           border-radius: var(--radius-regular);
-
-          border: 2px solid red;
-
           width: 8em;
         }
       }
@@ -107,6 +104,25 @@
       align-self: center;
       flex-shrink: 0;
 
+      .pin-button {
+        border: 1px solid transparent;
+        // border-color: var(--color-neutral-emphasis);
+
+        svg {
+          width: 16px;
+          fill: rgba(black, 0.8);
+        }
+
+        &.is-pinned {
+          // background-color: var(--color-neutral-emphasis);
+
+          svg {
+            fill: white;
+          }
+        }
+      }
+
+
       .icon-button {
         padding: var(--spacing-s);
       }
@@ -114,20 +130,39 @@
   }
 }
 
-.pin-button {
-  border-color: transparent;
-  background-color: rgba(black, 0.1);
 
-  svg {
-    width: 16px;
-    fill: rgba(black, 0.8);
+
+:global(:root[data-theme="dark"]) {
+
+
+  .playlist-item {
+    .pin-button {
+      border-color: #afb8c1;
+
+      svg {
+        fill: white;
+      }
+
+      &.is-pinned {
+        background-color: #afb8c1;
+
+        svg {
+          fill: currentColor;
+        }
+      }
+    }
   }
+}
 
-  &.is-pinned {
-    background-color: rgba(black, 0.6);
+:global(:root[data-theme="light"]) {
 
-    svg {
-      fill: white;
+  .playlist-item {
+    .pin-button {
+      border-color: var(--color-neutral-emphasis);
+
+      &.is-pinned {
+        background-color: var(--color-neutral-emphasis);
+      }
     }
   }
 }

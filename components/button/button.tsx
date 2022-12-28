@@ -5,7 +5,7 @@ interface ButtonProps {
   handleClick: () => void
   children: React.ReactNode
 
-  variant?: '' | 'primary'
+  variant?: '' | 'primary' | 'outline'
 
   disabled?: boolean
   className?: string

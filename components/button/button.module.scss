@@ -3,10 +3,37 @@
   font-family: var(--font-display);
 
   font-weight: bold;
+  border: 1px solid transparent;
+
 
   &.primary {
     border-color: transparent;
-    color: white;
-    background-color: black;
+    // TODO: fix!
+    color: #c9d1d9;//  var(--color-fg-default);
+    background-color: #238636; //var(--color-primary);
+
+    svg {
+      fill: currentColor;
+    }
+  }
+
+  &.outline {
+    border-color: var(--color-border-default);
+  }
+}
+
+:global(:root[data-theme="dark"]) {
+  .button {
+    svg {
+      fill: white;
+    }
+  }
+}
+
+:global(:root[data-theme="light"]) {
+  .button {
+    &.primary {
+      // color: white;
+    }
   }
 }
